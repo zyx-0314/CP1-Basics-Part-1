@@ -39,7 +39,7 @@ int main()
 
         system("pause");    // 4.2 pause the terminal for a while before continuing
 
-        exit(0);   // 4.3 exit with no error or 0 
+        std::exit(0);   // 4.3 exit with no error or 0
     }
     // 4.2 Continue below if condition is not true
 
