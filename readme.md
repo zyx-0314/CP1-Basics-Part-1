@@ -5,6 +5,7 @@
 
 <div align="center">
   <a href="https://github.com/zyx-0314/">
+    <img src="./assets/nyebe_logo_wt_250px.png" alt="Nyebe" width="130" height="130">
   </a>
   <h3 align="center">Basic Input, Output, and Conditionals</h3>
 </div>
