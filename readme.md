@@ -51,13 +51,6 @@
 
 ![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 
-## Roadmap
-
-1. **Age Validation**: Improve the validation logic to handle other edge cases (e.g., negative numbers, overly high values).
-2. **Additional Inputs**: Expand the program to collect more detailed user information (e.g., location, interests).
-3. **Graphical User Interface**: Transition from console-based to GUI-based input/output for a more interactive experience.
-4. **Performance Enhancements**: Refactor the logic to handle more complex scenarios and optimize performance.
-
 ## Resources
 
 | Title                      | Purpose                                       | Link                                        |
