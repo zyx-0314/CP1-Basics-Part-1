@@ -20,7 +20,8 @@
 	1. Naming Convention
 		variable - camelCase (-10%)
 		constant - SNAKE_SCREAMING_CASE (-10%)
-	2. Naming should make sense & Use only global abbreviation
+		function - PascalCase (-10%)
+	2. Naming should make sense & Use only global abbreviation (-10%)
 	3. Code Construction (-2%)
 		{
 			constant variable
@@ -32,148 +33,133 @@
 
 */
 
-// Input age of user and name
-// check the age if they can go for education
+// Demo Project
+// Collect Grade of student in 5 subjects and display average with their name
+
+// Activity projects
+// 1. Collect names and age of visitors of resort, based on their age provide them their required payment(Levels: Kids, Adult, Senior). payment should check if they input enough
+// 2. Sari Sari Store System, user can pick as much as they can and compute their total amount to be payed and add their name in receipt
+// 3. Compute the total clients entering a park per group then providing them a name for their group for payment. if not payed enough they can't enter and will entertain other user
+// 4. User can compute the salary of their worker per hour, inputing their salary per hour and their time of work, a additional bonus if they are working night shift (x1.5), early morning shift (x1.8)
+// 5. 
 
 #include <iostream>
+#include <string>
+#include <cstring>
+
+std::string InputStringPassVal(std::string);
+void InputStringPassRef(std::string, std::string&);
+void ComputeGrade(float&);
+bool WantToContinue();
 
 int main()
 {
-    std::string name, teacherChoice;
-    int age, numberChoice;
-    char letterChoice;
+	float average;
+	std::string name, section, school;
 
-    // 1. Welcome Message - (Display - cout)
-    std::cout
-        << "Hi! Welcome.\n"
-        << "What's your name?\n"
-        ;
-    // 2. Input - cin
-    std::cin >> name;
+	while (true) {
+        // 1. Uses a function that set instruction in cout and accepts and return data in passing by value
+		name = InputStringPassVal("Your Name: ");
+		section = InputStringPassVal("Your Section: ");
 
-    std::cout << "What's your age?\n";
-    std::cin >> age;
+        // 2. Uses a function that set instruction in cout and accepts and return data in passing by reference
+		InputStringPassRef("Your School: ", school);
 
-    system("cls");  // 3. cleaning the screen | clear screen command
+        // 3. Compute the grade in function by reference
+		ComputeGrade(average);
 
-    // 4. Logic: Error Trap - if the user inputted a proper age
-    // Demo of If condition
-    if (0 > age)
-    {
-        // 4.1 Prompt a feed back of the error 
-        std::cout << "You inputted a wrong age" << std::endl;
+        // 4. Display Data in hold
+		std::cout << name << ":" << section << " - " << school << " - " << average << "\n";
 
-        system("pause");    // 4.2 pause the terminal for a while before continuing
+        // 5. Using an WantToContinue function that returns boolean it will determine if the console app will exit or not
+		if (!WantToContinue())
+		{
+			exit(0);
+		}
+	}
 
-        std::exit(0);   // 4.3 exit with no error or 0
-    }
-    // 4.2 Continue below if condition is not true
-
-    // 5. Display and use variable in cout
-    std::cout << "Hi! " << name << " your age is " << age << std::endl;
-
-    // 6. Response if either they can go to school or not
-    // Demo of If else
-    if (3 <= age)
-    {
-        // 6.1.1 They are welcomed in school
-        std::cout << "Welcome to schooling" << std::endl;
-
-        // 6.1.2.1 check if age is 3 - 4
-        // Demo of If else chain
-        if (3 <= age && 5 > age)
-        {
-            std::cout << "Welcome to Pre-School " << name << std::endl;
-        }
-        // 6.2.2.2 if not it will check if age is 5 - 10
-        else if (5 <= age && 11 > age)
-        {
-            std::cout << "Welcome to Elementary" << std::endl;
-        }
-        // 6.2.2.3 if not it will check if age is 11 - 14
-        else if (11 <= age && 15 > age)
-        {
-            std::cout << "Welcome to Junior High" << std::endl;
-        }
-        // 6.2.2.4 if not it will check if age is 15 - 17
-        else if (15 <= age && 17 > age)
-        {
-            std::cout << "Welcome to Senior High" << std::endl;
-        }
-        // 6.2.2.5 if not it will check if age is 17 - 30
-        else if (17 <= age && 30 >= age)
-        {
-            std::cout << "Welcome to College(Hell)" << std::endl;
-        }
-        // 6.2.2.6 if non of the condition match it will prompt the cout here
-        else
-        {
-            std::cout << "YOUR OLD" << std::endl;
-        }
-    }
-    else
-    {
-        // 6.2 if they are lower than 3
-        std::cout << "Sorry wait until you get 3" << std::endl;
-    }
-
-    std::cout
-        << "\n\n\n\n"
-        << "Whats your favorite Letter a, b, c (only input lowercase): "
-        ;
-    std::cin >> letterChoice;
-
-    // 7. Will base on letterChoice the comparison of constant cases in char
-    switch (letterChoice)
-    {
-        // 7.1 If it matches the a
-    case 'a':
-        std::cout << "A is for Apple" << std::endl;
-        break;
-        // 7.2 If it matches the b
-    case 'b':
-        std::cout << "B is for Ball" << std::endl;
-        break;
-        // 7.3 If it matches the c
-    case 'c':
-        std::cout << "C is for Carrot" << std::endl;
-        break;
-        // 7.4 none matches
-    default:
-        std::cout << "Sorry but I don't recognize the Letter" << std::endl;
-        break;
-    }
-
-    std::cout
-        << "\n\n\n\n"
-        << "Whats your favorite number: "
-        ;
-    std::cin >> numberChoice;
-
-    // 8. Will base on letterChoice the comparison of constant cases in number
-    switch (numberChoice)
-    {
-        // 8.1 if it matches the 1
-    case 1:
-        std::cout << "Your 1" << std::endl;
-        break;
-        // 8.2 if it matches the 2
-    case 2:
-        std::cout << "Your 2" << std::endl;
-        break;
-        // 8.3 if it matches the 3
-    case 3:
-        std::cout << "Your 3" << std::endl;
-        break;
-        // 8.4 none matches
-    default:
-        std::cout << "Sorry but I don't recognize the Number" << std::endl;
-        break;
-    }
-
-    std::cout << "\n\n";
-
-    system("pause"); // pausing before continue
-
-    return 0;        // ending the code with 0 error
+	return 0;
 }
+
+// A function that set instruction in cout and accepts and return data in passing by value
+std::string InputStringPassVal(std::string instruction) {
+	std::string inputString;
+
+    // 1. it will use the instruction provided
+	std::cout << instruction;
+	std::getline(std::cin, inputString);
+
+    // 2. return input
+	return inputString;
+}
+
+// A function that set instruction in cout and accepts and return data in passing by reference
+void InputStringPassRef(std::string instruction, std::string& inputString) {
+
+    // 1. it will use the instruction provided
+	std::cout << instruction;
+    // 2. input the user information in the referenced variable
+	std::getline(std::cin, inputString);
+}
+
+// A function that use by reference the average and store the computed grade
+void ComputeGrade(float& average) {
+	const int MAX = 5;
+
+	int input, total = 0;
+
+    // 3. it will loop until the i is more than the set value of MAX
+	for (int i = 0; i < MAX; i++)
+	{
+        do
+        {
+            // 1. prompt the user 
+                // the first part i + 1 is used to provide number indication to user in human number counting
+            std::cout << i + 1 << " Input Grade (0 -100): ";
+            std::cin >> input;
+            // 2. if input is not 0 - 100 it will loop
+        } while(100 < input || 0 > input)
+
+        // 3. after input it will then be automatically added to the total
+		total += input;
+	}
+
+    // 4. it will do the computation of average
+	average = total / MAX;
+}
+
+// A function that checks the user input if correct, and return true or false
+bool WantToContinue() {
+	bool choice;
+	std::string input;
+
+	do
+	{
+		std::cin.ignore();
+        // 1. Prompt user a option
+		std::cout << "Do you want to do another? [y/n]\n";
+        // 2. Accepts user input even with space 
+		std::getline(std::cin, input);
+
+        // 3. select only the first character of the input and always in lower case
+		    // input[0] is to get the first character input in string
+		    // tolower converts the character to lowercase
+		input = std::tolower(input[0]);
+
+        // 4.1 if it is y or n it will set to return
+		if (input == "y" || input == "n")
+		{
+			system("cls");
+            // 5.1 if the input is y then return 1 which is true
+			if (input == "y") {
+				return 1;
+			}
+            // 5.2 else the input is y then return 0 which is false
+			else {
+				return 0;
+			}
+		}
+    // 4.2 else it will loop back to start
+	} while (true);
+}
+
