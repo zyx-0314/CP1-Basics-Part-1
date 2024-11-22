@@ -16,6 +16,8 @@
 
 <br/>
 
+![](https://visit-counter.vercel.app/counter.png?page=zyx-0314/CP1-Basics-Part-1)
+
 ---
 
 <details>
